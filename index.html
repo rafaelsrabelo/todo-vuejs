@@ -17,16 +17,21 @@
       <form action="">
         <p>{{currentTodo}}</p>
         <input v-model="currentTodo" type="text" placeholder="Description" maxlength="500">
-        <button @click.prevent="addTodo" class="btn btn-dark">+</button>
+        <button @click.prevent="addTodo" class="btn">+</button>
       </form>
     </header>
     <section class="mt-2">
       <ol>
-        <li v-for="todo in todos" :key="todo.text">
+        <li v-for="todo in todos" :key="todo.text" @click="toggleTodo(todo)">
           <div>
-            <input type="checkbox">
+            <input type="checkbox" v-bind:checked="todo.done">
             <label>
-              {{ todo.text }}
+              <del v-if="todo.done">
+                {{ todo.text }}
+              </del>
+              <span v-else="">
+                {{ todo.text }}
+              </span>
             </label>
           </div>
         </li>

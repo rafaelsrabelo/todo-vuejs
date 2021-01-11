@@ -5,7 +5,7 @@ new Vue({
     todos: [
       { text: "Learn vue", done: false },
       { text: "Learn Java", done: false },
-      { text: "Play with friends", done: true }
+      { text: "Play with friends", done: false }
     ]
   },
   methods: {
@@ -15,6 +15,9 @@ new Vue({
         done: false
       });
       this.currentTodo = "";
+    },
+    toggleTodo(todo) {
+      todo.done = !todo.done;
     }
   }
 });
